@@ -2,6 +2,10 @@ const CLASSE_X = 'x';
 const CLASSE_O = 'o';
 var turno = CLASSE_X;
 
+var tabu = document.getElementById("tabuleiro");
+
+tabu.classList.add(turno);
+
 const tabuleiro = {
     linha1: ['', '', ''],
     linha2: ['', '', ''],
@@ -23,7 +27,7 @@ function ClickMouse(e){
     
     Computa(elemento);
 
-    turnos(classeAtual);
+    turnos(classeAtual, celula);
 }
 
 function imprime(celula, classeAtual){
@@ -35,10 +39,13 @@ function turnos(classeAtual){
         turno = CLASSE_X;
     else
         turno = CLASSE_O;
+
+    tabu.classList.add(turno);
 }
 
 function Computa(elemento){
     const id = elemento
+    let tempo = 0;
     
     if (id >= 1 && id <= 3){
         for(let i = 0; i <= 2; i++){
@@ -61,7 +68,14 @@ function Computa(elemento){
                     }
                 }
             }
-      
 
-    console.log(tabuleiro.linha1, tabuleiro.linha2, tabuleiro.linha3);
+    tempo++;
+
+    if(tempo >= 5){
+        verificaGanhador();
+    }
+}
+
+function verificaGanhador(){
+
 }
