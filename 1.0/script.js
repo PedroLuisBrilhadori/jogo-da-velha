@@ -2,14 +2,17 @@ const CLASSE_X = 'x';
 const CLASSE_O = 'o';
 var turno = CLASSE_X;
 
+const ganhou = document.getElementById("ganhou");
+const mostra = document.getElementById("mostrai");
+
 const tabu = document.getElementById("tabuleiro");
 
 tabu.classList.add(turno);
 
 const tabuleiro = {
-    linha1: ['', '', ''],
-    linha2: ['', '', ''],
-    linha3: ['', '', '']
+    linha1: ['1', '2', '3'],
+    linha2: ['4', '5', '6'],
+    linha3: ['7', '8', '9']
 };
 
 const CelulasElement = document.querySelectorAll('[data-celula]');
@@ -26,6 +29,8 @@ function ClickMouse(e){
     imprime(celula, classeAtual);
     
     Computa(elemento);
+
+    verificaGanhador(classeAtual);
 
     turnos(classeAtual, celula);
 }
@@ -46,7 +51,6 @@ function turnos(classeAtual){
 
 function Computa(elemento){
     const id = elemento
-    let tempo = 0;
     
     if (id >= 1 && id <= 3){
         for(let i = 0; i <= 2; i++){
@@ -69,14 +73,48 @@ function Computa(elemento){
                     }
                 }
             }
-
-    tempo++;
-
-    if(tempo >= 5){
-        verificaGanhador();
-    }
 }
 
-function verificaGanhador(){
+function verificaGanhador(classeAtual){
+    
+    // linhas
+    if (tabuleiro.linha1[0] == tabuleiro.linha1[1] && tabuleiro.linha1[1] == tabuleiro.linha1[2]) {
+        let ganhador = classeAtual;
+        ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+        return mostra.classList.add('mostrar');
+    } else
+        if (tabuleiro.linha2[0] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha2[2]) {
+            const ganhador = classeAtual;
+            ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+            return mostra.classList.add('mostrar');
+        } else
+            if (tabuleiro.linha3[0] == tabuleiro.linha3[1] && tabuleiro.linha3[1] == tabuleiro.linha3[2]) {
+                const ganhador = classeAtual;
+                ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                return mostra.classList.add('mostrar');
+            } else {
+                if (tabuleiro.linha1[0] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha3[2]) {
+                    const ganhador = classeAtual;
+                    ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                    return mostra.classList.add('mostrar');
+                } else
+                    if (tabuleiro.linha1[2] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha3[0]) {
+                        const ganhador = classeAtual;
+                        ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                        return mostra.classList.add('mostrar');
+                    } else {
+                        // colunas
+                        for (let i = 0; i <= 2; i++) {
+                            if (tabuleiro.linha1[i] == tabuleiro.linha2[i] && tabuleiro.linha2[i] == tabuleiro.linha3[i]) {
+                                const ganhador = classeAtual;
+                                ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                                return mostra.classList.add('mostrar');
+                            }
+                        }
+                    }
+            }
+}
 
+function recarregar(){
+    window.location.reload();
 }
