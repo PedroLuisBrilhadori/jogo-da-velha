@@ -1,0 +1,50 @@
+*, *::after, *::before{
+    box-sizing: border-box;
+}
+
+:root{
+    --tamanho-celula: 100px;
+    --tamanho-marcacao: cal(var(--tamanho-celula) * .9);
+}
+
+.body{
+    margin: 0;
+}
+
+.tabuleiro{
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+    grid-template-columns: repeat(3, auto);
+}
+
+
+.celula{
+    width: var(--tamanho-celula);
+    height: var(--tamanho-celula);
+    border: 1px solid black;
+}
+
+.celula:first-child,
+.celula:nth-child(2),
+.celula:nth-child(3){
+    border-top: none;
+}
+
+.celula:nth-child(3n + 1){
+    border-left: none;
+}
+
+.celula:nth-child(3n + 3){
+    border-right: none;
+}
+
+.celula:last-child,
+.celula:nth-child(8),
+.celula:nth-child(7){
+    border-bottom: none;
+}
