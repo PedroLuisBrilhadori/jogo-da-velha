@@ -2,7 +2,7 @@ const CLASSE_X = 'x';
 const CLASSE_O = 'o';
 var turno = CLASSE_X;
 
-var tabu = document.getElementById("tabuleiro");
+const tabu = document.getElementById("tabuleiro");
 
 tabu.classList.add(turno);
 
@@ -35,11 +35,12 @@ function imprime(celula, classeAtual){
 }
 
 function turnos(classeAtual){
-    if(classeAtual == CLASSE_O)
+    tabu.classList.remove(turno);
+    if(classeAtual == CLASSE_O){
         turno = CLASSE_X;
-    else
+    }else{
         turno = CLASSE_O;
-
+    }
     tabu.classList.add(turno);
 }
 
