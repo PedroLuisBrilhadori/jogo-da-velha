@@ -1,6 +1,7 @@
 const CLASSE_X = 'x';
 const CLASSE_O = 'o';
 var turno = CLASSE_X;
+var tempo = 0;
 
 const ganhou = document.getElementById("ganhou");
 const mostra = document.getElementById("mostrai");
@@ -76,42 +77,49 @@ function Computa(elemento){
 }
 
 function verificaGanhador(classeAtual){
-    
+
     // linhas
     if (tabuleiro.linha1[0] == tabuleiro.linha1[1] && tabuleiro.linha1[1] == tabuleiro.linha1[2]) {
-        let ganhador = classeAtual;
+        var ganhador = classeAtual;
         ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
         return mostra.classList.add('mostrar');
     } else
         if (tabuleiro.linha2[0] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha2[2]) {
-            const ganhador = classeAtual;
+            var ganhador = classeAtual;
             ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
             return mostra.classList.add('mostrar');
         } else
             if (tabuleiro.linha3[0] == tabuleiro.linha3[1] && tabuleiro.linha3[1] == tabuleiro.linha3[2]) {
-                const ganhador = classeAtual;
+                var ganhador = classeAtual;
                 ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
                 return mostra.classList.add('mostrar');
             } else {
                 if (tabuleiro.linha1[0] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha3[2]) {
-                    const ganhador = classeAtual;
+                    var ganhador = classeAtual;
                     ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
                     return mostra.classList.add('mostrar');
                 } else
                     if (tabuleiro.linha1[2] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha3[0]) {
-                        const ganhador = classeAtual;
+                        var ganhador = classeAtual;
                         ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
                         return mostra.classList.add('mostrar');
                     } else {
                         // colunas
                         for (let i = 0; i <= 2; i++) {
                             if (tabuleiro.linha1[i] == tabuleiro.linha2[i] && tabuleiro.linha2[i] == tabuleiro.linha3[i]) {
-                                const ganhador = classeAtual;
+                                var ganhador = classeAtual;
                                 ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
                                 return mostra.classList.add('mostrar');
-                            }
+                            }    
                         }
                     }
+            }
+
+            tempo++;
+            console.log(tempo)
+            if(tempo == 9){
+                ganhou.innerText = "Deu Velha!";
+                return mostra.classList.add('mostrar');
             }
 }
 
