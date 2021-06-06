@@ -4,7 +4,7 @@
 
 :root{
     --tamanho-celula: 100px;
-    --tamanho-marcacao: cal(var(--tamanho-celula) * .9);
+    --tamanho-marcacao: calc(var(--tamanho-celula) * .9);
 }
 
 .body{
@@ -23,10 +23,15 @@
 }
 
 
+
 .celula{
     width: var(--tamanho-celula);
     height: var(--tamanho-celula);
     border: 1px solid black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
 }
 
 .celula:first-child,
@@ -46,5 +51,66 @@
 .celula:last-child,
 .celula:nth-child(8),
 .celula:nth-child(7){
-    border-bottom: none;
+    border-bottom: none;    
+}
+
+.celula.x,
+.celula.o{
+    cursor: not-allowed;
+}
+
+.tabuleiro.x .celula:not(.x):not(.o):hover::before,
+.tabuleiro.x .celula:not(.x):not(.o):hover::after,
+.tabuleiro.o .celula:not(.x):not(.o):hover::before{
+    background-color: lightgray;
+}
+
+.celula.x::before,
+.celula.x::after{
+    background-color: black;
+}
+
+.celula.x::before,
+.celula.x::after,
+.tabuleiro.x .celula:not(.x):not(.o):hover::before,
+.tabuleiro.x .celula:not(.x):not(.o):hover::after{
+    content: '';
+    position: absolute;
+    width: calc(var(--tamanho-marcacao) * .15);
+    height: var(--tamanho-marcacao);
+}
+
+.celula.x::before,
+.tabuleiro.x .celula:not(.x):not(.o):hover::before{
+    transform: rotate(45deg);
+}
+
+.celula.x::after,
+.tabuleiro.x .celula:not(.x):not(.o):hover::after{
+    transform: rotate(-45deg);
+}
+
+
+.celula.o::before,
+.celula.o::after,
+.tabuleiro.o .celula:not(.x):not(.o):hover::before,
+.tabuleiro.o .celula:not(.x):not(.o):hover::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+}
+.celula.o::before{
+    background-color: black;
+}
+.celula.o::before,
+.tabuleiro.o .celula:not(.x):not(.o):hover::before{
+    width: var(--tamanho-marcacao);
+    height: var(--tamanho-marcacao);
+}
+
+.celula.o::after,
+.tabuleiro.o .celula:not(.x):not(.o):hover::after{
+    width: calc(var(--tamanho-marcacao) * .7);
+    height: calc(var(--tamanho-marcacao) * .7);
+    background-color: white;
 }
