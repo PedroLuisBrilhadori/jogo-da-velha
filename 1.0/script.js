@@ -86,29 +86,29 @@ function verificaGanhador(classeAtual){
     } else
         if (tabuleiro.linha2[0] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha2[2]) {
             var ganhador = classeAtual;
-            ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+            ganhou.innerText = `${ganhador.toUpperCase()} Venceu!`;
             return mostra.classList.add('mostrar');
         } else
             if (tabuleiro.linha3[0] == tabuleiro.linha3[1] && tabuleiro.linha3[1] == tabuleiro.linha3[2]) {
                 var ganhador = classeAtual;
-                ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                ganhou.innerText = `${ganhador.toUpperCase()} Venceu!`;
                 return mostra.classList.add('mostrar');
             } else {
                 if (tabuleiro.linha1[0] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha3[2]) {
                     var ganhador = classeAtual;
-                    ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                    ganhou.innerText = `${ganhador.toUpperCase()} Venceu!`;
                     return mostra.classList.add('mostrar');
                 } else
                     if (tabuleiro.linha1[2] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha3[0]) {
                         var ganhador = classeAtual;
-                        ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                        ganhou.innerText = `${ganhador.toUpperCase()} Venceu!`;
                         return mostra.classList.add('mostrar');
                     } else {
                         // colunas
                         for (let i = 0; i <= 2; i++) {
                             if (tabuleiro.linha1[i] == tabuleiro.linha2[i] && tabuleiro.linha2[i] == tabuleiro.linha3[i]) {
                                 var ganhador = classeAtual;
-                                ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+                                ganhou.innerText = `${ganhador.toUpperCase()} Venceu!`;
                                 return mostra.classList.add('mostrar');
                             }    
                         }
