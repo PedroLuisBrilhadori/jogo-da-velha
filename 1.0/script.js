@@ -81,7 +81,7 @@ function verificaGanhador(classeAtual){
     // linhas
     if (tabuleiro.linha1[0] == tabuleiro.linha1[1] && tabuleiro.linha1[1] == tabuleiro.linha1[2]) {
         var ganhador = classeAtual;
-        ganhou.innerText = `${ganhador.toUpperCase()}'s Venceu!`;
+        ganhou.innerText = `${ganhador.toUpperCase()} Venceu!`;
         return mostra.classList.add('mostrar');
     } else
         if (tabuleiro.linha2[0] == tabuleiro.linha2[1] && tabuleiro.linha2[1] == tabuleiro.linha2[2]) {
